@@ -1,1 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Planner</title>
+    <link href="./style.css" rel="stylesheet"></link>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&family=Satisfy&display=swap" rel="stylesheet">
+<script src="./script.js" defer></script>
+</head>
+<body>
+    <div class="nav-section">
+        <nav class="nav-bar">
+           <h1 id="logo">Meal <span id="planner-logo">Planner</span></h1>
+        </nav>
+    </div>
 
+    <!----------Steps section ----------------- -->
+    <div class="container-para">
+        <h1 class="heading">Meal Planning Got Easy</h1>
+        <p class="para">Get organized meals with Meal Planner. Our Meal Planning App helps you customize your weekly meal based on your body features like height, weight, age, gender, and activity level.</p>
+        <div class="steps-container">
+           <div class="steps">
+               <img class="step-img" src="https://www.svgrepo.com/show/457685/form.svg" scale="0"><br>
+               <span class="num">1</span><br>
+               <span class="step-text">Fill out the form</span>
+           </div>
+           <div class="steps">
+            <img class="step-img" src="https://www.eatwell101.com/wp-content/plugins/eric-meal-planner/assets/images/phone.jpg" scale="0"><br>
+            <span class="num">2</span><br>
+            <span class="step-text">Choose your meal</span>
+           </div>
+           <div class="steps">
+            <img class="step-img" src="https://www.svgrepo.com/show/4638/rice.svg" scale="0"><br>
+            <span class="num">3</span><br>
+            <span class="step-text">Get the recipe of your meal</span>
+          </div>
+        </div>
+    </div>
+
+    <!-- -----------Form section---------- -->
+    <div class="form">
+        <input class="form-tab" id="height" type="number" placeholder="Enter Height in cm">
+        <input class="form-tab" id="weight" type="number" placeholder="Enter Weight in kg">
+        <input class="form-tab" id="age" type="number" placeholder="Enter Age"><br>
+        <select name="gender" id="gender" class="form-tab">
+            <option>Gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+        <select name="physical-activity" class="form-tab" id="activity-level">
+            <option value="">Activity Level</option>
+            <option value="light">Lightly active (exercise 1–3 days/week)</option>
+            <option value="moderate">Moderately active (exercise 3–5 days/week)</option>
+            <option value="active">Active (exercise 6–7 days/week)</option>
+        </select><br>
+        <button class="form-tab" id="button" type="submit">Generate</button>
+    </div>
+
+    <!-- ---------meal cards sections----------------- -->
+    <div class="cards-container">
+         <!-- <div class="cards">
+             <div class="meal-img">
+                <img src="https://imgk.timesnownews.com/story/breakfast-2408818_1280.jpg" alt="food">
+             </div>
+             <div class="meal-name">
+                <h3>healthy meal</h3>
+             </div>
+             <button class="getbtn" type="submit">GET RECIPE</button>
+         </div> -->
+    </div>
+
+    <!-- -----meal details----- -->
+     <div class="ingred-container" id="recipe-ingred">
+           <!-- <table class="recipe-table">
+                  <tr>
+                     <th>INGREDIENT</th>
+                     <th>AMOUNT</th>
+                  </tr> 
+                  <tr id="recipeList">
+                     
+                  </tr>  
+           </table>  -->
+     </div>
+</body>
+</html>

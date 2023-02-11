@@ -1,1 +1,210 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+   
+}
+/* logo section */
+.nav-section{
+    background-color: whitesmoke;
+    padding: 1px;
+}
+#logo{
+   font-family: 'Dancing Script', cursive;
+   color:rgba(0, 116, 68,0.6);
+   font-weight: 900; /*adds boldness*/
+   font-size:40px;
+   margin-left: 40px;
+}
+#planner-logo{
+    color:rgb(218, 83, 20);
+}
+/* information and tagline */
+
+.container-para{
+    text-align: center;
+}
+.container-para .heading{
+    font-size: 40px;
+    font-family: 'Itim', cursive;
+    color:rgba(3, 83, 3, 0.8);
+}
+.container-para .para{
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 20px;
+}
+
+/* steps section */
+.steps {
+    text-align: center;
+    display:inline-block;  /*keeps the block horizontally align*/
+    width:25%;
+    padding-bottom: 30px;
+}
+
+.steps .step-img {
+    height: 180px;
+    width:auto;
+    padding:15px;
+}
+.steps .num{
+    display: inline;
+    background-color: rgb(0, 128, 0, 0.8);
+    padding:8px 12px;   /* padding and border radius gives circular appeance around number*/
+    border-radius: 20px;
+    color:#ffffff;
+}
+.steps .step-text{
+    font-size: 17px;
+    display: inline-block;
+    margin-top: 10px; 
+    color:grey;
+    padding:15px;
+}
+
+/* form section */
+.form{
+    box-sizing: border-box;
+    text-align: center; 
+    padding:80px;
+    background:url("https://images.pexels.com/photos/1640773/pexels-photo-1640773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") no-repeat top center;
+    background-size: cover;  /*to cover the whole screen with image*/
+    background-position:bottom; /*to put bottom part of background image in background*/
+}
+
+.form-tab{
+    font-family: inherit;
+  font-size: inherit;
+  background-color: #f4f2f2;
+  border: 1px solid rgb(218, 83, 20);
+  color: #646464;
+  padding: 8px;
+  border-radius: 30px;
+  width: 12em;
+  transition: all ease-in-out .5s;
+  margin: 15px;
+}
+.form .form-tab:hover{
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+}
+#button{
+    background-color: rgb(218, 83, 20);
+    color:white;
+    position: relative;
+    transition: all 0.3s;
+}
+#button:active{
+    transform: translateY(2px);
+    box-shadow:0 5px 5px 0 rgb(240, 142, 97);
+}
+.form .form-tab:focus{
+    border: 1px solid rgb(218, 83, 20);
+}
+
+/* meal cards section  */
+.cards-container{
+      max-width:1280px;
+      margin:0 auto;
+      padding: 2rem;
+      text-align: center;
+}
+
+.cards{
+    background-color: whitesmoke;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+}
+
+.meal-img img{
+    width:100%;
+    display: block;
+}
+
+.meal-name{
+    padding :1rem 0.5rem;
+}
+
+.meal-name h3{
+    font-size: 1.4rem;
+}
+.getbtn{
+    text-decoration: none;
+    color:white;
+    background:rgb(218, 83, 20);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding:0.75rem; 
+    display: block;
+    width: 175px;
+    margin: 1rem auto;
+    border-radius:2rem;
+    border-color: rgb(218, 83, 20);
+    transition: all 0.4s linear;
+}
+
+/* ---------meal details ---------*/
+
+
+/* if meal not found text styles */
+.notFound{
+    grid-template-columns: 1fr!important;
+    color:rgb(218, 83, 20);
+    font-size: 1.8rem;
+    font-weight:600;
+}
+
+/* ------ingrediants --------- */
+
+.recipe-table{
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+th{
+    background-color: #646464;
+    color: #eee;
+}
+td,
+th {
+    border: 1px solid none;
+    border-radius: 10px;
+    padding: 10px; 
+    text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #eee;
+}
+
+/* ------media queriees------ */
+@media screen and (min-width:600px) {
+    .form{
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .cards-container{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap:3rem;
+    }
+    .cards{
+        margin:0;
+    }
+    .meal-details{
+        width: 700px;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .form{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
 
