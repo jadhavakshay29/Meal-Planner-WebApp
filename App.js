@@ -14,8 +14,9 @@ let moderateAct;
 let activeAct;
 let calRequire;
 let calories1;
-let mealObject;
+let meal;
 // let mealRecipe={};
+
 function BMRCalculatn() {
   if (genderIP.value === "male") {
     maleBMR =
@@ -55,6 +56,7 @@ function BMRCalculatn() {
 //     console.log(mealAPI1);
 // }
 
+//to call the api 
 function getRecipe() {
   console.log("fetch recipe");   
   fetch(
@@ -71,18 +73,19 @@ function getRecipe() {
   })
 }
 
+
+//card creation using html
 function getCard(meal) {
-  mealObject = meal;
-  return `<div class="cards" data-id="${mealObject.id}">
+  return `<div class="cards" data-id="${meal.id}">
               <div class="meal-img">
-                  <img src="https://spoonacular.com/recipeImages/${mealObject.id}-556x370.jpg" alt="food">
+                  <img src="https://spoonacular.com/recipeImages/${meal.id}-556x370.jpg" alt="food">
               </div>
               <div class="meal-name">
                     <h3>${meal.title}</h3>
                     <h4>calories: ${calories1}</h4>
-                    <h4>cooking time: ${mealObject.readyInMinutes} minutes</h4>
+                    <h4>cooking time: ${meal.readyInMinutes} minutes</h4>
                </div>
-               <button class="getbtn" type="submit">GET RECIPE</button>
+               <button class="getbtn" data-meal='${JSON.stringify(meal)}' type="submit">GET RECIPE</button>
           </div>`;
 }
 
@@ -90,10 +93,10 @@ function addMeal(data) {
         const cardsContainer = document.querySelector('.cards-container');
         data.forEach(meal => {
           var html = getCard(meal);
-          console.log(html);
+          // console.log(html);
           cardsContainer.innerHTML += getCard(meal);
         });
-        console.log(cardsContainer);
+        // console.log(cardsContainer);  // contains the html code for cards
 }
 
 //event listeners
@@ -106,18 +109,18 @@ generateBtn.addEventListener("click", () => {
     console.log("there's problem with API call");
   }
 });
+
 //get recipe of meal
 function getMealRecipe(e) {
   e.preventDefault();
   // console.log(e.target);
   if (e.target.classList.contains("getbtn")) {
-    
-    let mealItem = e.target.parentElement.parentElement;
+    const meal = JSON.parse(e.target.getAttribute("data-meal")); // get the meal object from the button
     fetch(
-      `https://api.spoonacular.com/recipes/${mealObject.id}/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true&timeFrame=day`
+      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true&timeFrame=day`
     )
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res) => res.json())//to extract the json data 
+      .then((data) => {   //to access json data
         let recipeList1 = document.getElementById("recipe-ingred");
         if (data.nutrition) {
           let html = "";
