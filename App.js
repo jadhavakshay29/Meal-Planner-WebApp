@@ -51,9 +51,9 @@ function BMRCalculatn() {
 // generateBtn.addEventListener('click',BMRCalculatn);
 //API call function
 // async function getRecipe(){
-//     const mealAPI = await fetch('https://api.spoonacular.com/recipes/716429/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true');
-//     const mealAPI1 = await mealAPI.json();
-//     console.log(mealAPI1);
+//     const response = await fetch('https://api.spoonacular.com/recipes/716429/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true');
+//     const data = await resonse.json();
+//     console.log(data);
 // }
 
 //to call the api 
