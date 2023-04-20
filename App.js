@@ -115,7 +115,7 @@ function getMealRecipe(e) {
   e.preventDefault();
   // console.log(e.target);
   if (e.target.classList.contains("getbtn")) {
-    const meal = JSON.parse(e.target.getAttribute("data-meal")); // get the meal object from the button
+     meal = JSON.parse(e.target.getAttribute("data-meal")); // getting json meal data and parsing it to meal object from the button
     fetch(
       `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true&timeFrame=day`
     )
