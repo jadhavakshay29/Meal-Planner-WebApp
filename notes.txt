@@ -1,0 +1,36 @@
+old getMealRecipe function 
+
+function getMealRecipe(e) {
+  e.preventDefault();
+  // console.log(e.target);
+  if (e.target.classList.contains("getbtn")) {
+     meal = JSON.parse(e.target.getAttribute("data-meal")); // getting json meal data and parsing it to meal object from the button
+    fetch(
+      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true&timeFrame=day`
+    )
+      .then((res) => res.json())//to extract the json data 
+      .then((data) => {   //to access json data
+        let recipeList1 = document.getElementById("recipe-ingred");
+        if (data.nutrition) {
+          let html = "";
+          html += `
+              <table class="recipe-table">
+           <tr>
+              <th>INGREDIENT</th>
+              <th>QUANTITY</th>
+           </tr>`
+          data.nutrition.ingredients.forEach((ingredient) => {
+            html += `
+            <tr id="recipeList">
+                <td>${ingredient.name}</td>
+                <td>${ingredient.amount} ${ingredient.unit}</td>
+            </tr>
+          `;
+          });
+          html += `</table>`;
+          recipeList1.innerHTML = html;
+        }
+        console.log(data.nutrition);
+      });
+  }
+}

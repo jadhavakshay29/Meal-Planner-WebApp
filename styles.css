@@ -15,6 +15,7 @@
    font-weight: 900; /*adds boldness*/
    font-size:40px;
    margin-left: 40px;
+   /* text-align: center; */
 }
 #planner-logo{
     color:rgb(218, 83, 20);
@@ -176,6 +177,72 @@ th {
 }
 tr:nth-child(even) {
     background-color: #eee;
+}
+
+/*------------Recipe steps -----------------  */
+#recipe-steps{
+    background-color: whitesmoke;
+    margin: 10px 400px;
+    border-radius: 8px;
+    padding: 30px 80px;
+}
+
+#recipe-steps h3{
+    text-align: center;
+    margin: 8px 280px;
+    color: white;
+    background-color:#646464;
+    padding:10px 10px;
+    border-radius: 10px;
+}
+
+#recipe-steps ol li{
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.hidden{
+    display: none;
+}
+
+/* Footer */
+#footer {
+	background-color: rgb(101, 101, 101);
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+#footer .footer {
+	min-height: 200px;
+	flex-direction: column;
+	padding-top: 50px;
+	padding-bottom: 10px;
+    text-align: center;
+}
+#footer h2 {
+	color: white;
+	font-weight: 500;
+	font-size: 1rem;
+	letter-spacing: 0.1rem;
+	margin:20px 0;
+}
+#footer .social-icon {
+	display: flex;
+	margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+#footer .social-item {
+	height: 50px;
+	width: 50px;
+	margin: 0 10px;
+}
+#footer p {
+	color: white;
+	font-size: 1rem;
+}
+#footer .footer-logo{
+    color:white;
 }
 
 /* ------media queriees------ */

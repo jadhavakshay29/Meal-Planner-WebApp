@@ -15,6 +15,7 @@ let activeAct;
 let calRequire;
 let calories1;
 let meal;
+
 // let mealRecipe={};
 
 function BMRCalculatn() {
@@ -64,11 +65,12 @@ function getRecipe() {
   ).then(function(response) {
       if (response.status!==200){
             console.log("Error");     
-        return;
+        return ;
     }
     response.json().then(function(data){
         console.log(data);
         addMeal(data.meals);
+        // alertData(data.meals)
      });
   })
 }
@@ -96,6 +98,7 @@ function addMeal(data) {
           // console.log(html);
           cardsContainer.innerHTML += getCard(meal);
         });
+        
         // console.log(cardsContainer);  // contains the html code for cards
 }
 
@@ -104,7 +107,10 @@ mealList.addEventListener("click", getMealRecipe);
 generateBtn.addEventListener("click", () => {
   try {
     calories1 = BMRCalculatn();
-    getRecipe(); //api call function
+     getRecipe(); //api call function
+    //  alertData();
+    
+    console.log();
   } catch {
     console.log("there's problem with API call");
   }
@@ -113,35 +119,54 @@ generateBtn.addEventListener("click", () => {
 //get recipe of meal
 function getMealRecipe(e) {
   e.preventDefault();
-  // console.log(e.target);
   if (e.target.classList.contains("getbtn")) {
-     meal = JSON.parse(e.target.getAttribute("data-meal")); // getting json meal data and parsing it to meal object from the button
+    meal = JSON.parse(e.target.getAttribute("data-meal"));
+
     fetch(
-      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true&timeFrame=day`
+      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=f7b12ec8f2bd4b03a28f6784d6738f8f&includeNutrition=true`
     )
-      .then((res) => res.json())//to extract the json data 
-      .then((data) => {   //to access json data
-        let recipeList1 = document.getElementById("recipe-ingred");
-        if (data.nutrition) {
-          let html = "";
-          html += `
-              <table class="recipe-table">
-           <tr>
-              <th>INGREDIENT</th>
-              <th>QUANTITY</th>
-           </tr>`
+      .then((res) => res.json())
+      .then((data) => {
+        let recipeIngredients = document.getElementById("recipe-ingred");
+        let recipeSteps = document.getElementById("recipe-steps");
+        console.log(data);
+
+        if (data.nutrition && data.nutrition.ingredients.length > 0) {
+          let ingredientsHtml = `
+            <table class="recipe-table">
+              <tr>
+                <th>INGREDIENT</th>
+                <th>QUANTITY</th>
+              </tr>
+          `;
           data.nutrition.ingredients.forEach((ingredient) => {
-            html += `
-            <tr id="recipeList">
+            ingredientsHtml += `
+              <tr>
                 <td>${ingredient.name}</td>
                 <td>${ingredient.amount} ${ingredient.unit}</td>
-            </tr>
-          `;
+              </tr>
+            `;
           });
-          html += `</table>`;
-          recipeList1.innerHTML = html;
+          ingredientsHtml += "</table>";
+          recipeIngredients.innerHTML = ingredientsHtml;
         }
-        console.log(data.nutrition);
+
+        if (data.analyzedInstructions && data.analyzedInstructions.length > 0) {
+          let stepsHtml = `
+            <div>
+              <h3>STEPS</h3>
+              <ol>
+          `;
+          data.analyzedInstructions[0].steps.forEach((step) => {
+            stepsHtml += `<li>${step.step}</li>`;
+          });
+          stepsHtml += "</ol></div>";
+          recipeSteps.innerHTML = stepsHtml;
+          recipeSteps.classList.remove("hidden"); // Show the steps div
+        }
+      })
+      .catch((error) => {
+        console.log("Error occurred while fetching recipe steps", error);
       });
   }
 }
