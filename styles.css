@@ -182,14 +182,15 @@ tr:nth-child(even) {
 /*------------Recipe steps -----------------  */
 #recipe-steps{
     background-color: whitesmoke;
-    margin: 10px 400px;
+    margin: 10px 40px;
     border-radius: 8px;
     padding: 30px 80px;
 }
 
 #recipe-steps h3{
     text-align: center;
-    margin: 8px 280px;
+    margin: 1vh 4vw;
+    margin-bottom: 15px;
     color: white;
     background-color:#646464;
     padding:10px 10px;
@@ -246,12 +247,13 @@ tr:nth-child(even) {
 }
 
 /* ------media queriees------ */
-@media screen and (min-width:600px) {
+@media screen and (min-width:360px) {
     .form{
         width: auto;
         margin-left: auto;
         margin-right: auto;
     }
+   
 }
 
 @media screen and (min-width:768px) {
@@ -266,12 +268,17 @@ tr:nth-child(even) {
     .meal-details{
         width: 700px;
     }
+   
 }
 
 @media screen and (min-width:992px) {
     .form{
         grid-template-columns: repeat(3,1fr);
     }
+    #recipe-steps h3{
+        margin: 0 350px;
+    }
+  
 }
 
 
