@@ -173,7 +173,7 @@ th {
     border: 1px solid none;
     border-radius: 10px;
     padding: 10px; 
-    text-align: left;
+    text-align: center;
 }
 tr:nth-child(even) {
     background-color: #eee;
